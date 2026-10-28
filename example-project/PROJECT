@@ -1,0 +1,5 @@
+builderVersion: v0.0.0
+domain: eda.local
+name: example-project
+registry: change.me
+vendor: demo
