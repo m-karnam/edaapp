@@ -5,20 +5,44 @@ metadata:
 spec:
   appInfo:
     categories:
-    - uncategorised
+      - networking
     documentation: bottom_toolbar/docs
   author: demo
+  supportedEndpoints:
+    - "srl:25.*.*"
+    - "srl:26.*.*"
   dependencies:
-  - file:
-      path: utils
-  - file:
-      path: common
-  - file:
-      path: core
-  description: Sample description
-  group: bottom-toolbar.eda.local
-  image: change.me/bottom-toolbar:v0.0.0
+    - file:
+        path: utils
+    - file:
+        path: common
+    - file:
+        path: core
+    - file:
+        path: bottom_toolbar/api/v1alpha1/pysrc
+    - file:
+        path: bottom_toolbar/intents
+    - file:
+        path: bottom_toolbar/api
+  description: Set some crazy message in the CLI's bottom toolbar of the SR Linux nodes.
+  group: bottom-toolbar.eda.labs
+  image: ghcr.io/eda-labs/bottom-toolbar:v0.1.0
   supportedCoreVersions:
-  - v6.0.0-1
+    - v4.0.0-0
+    - v5.0.0-0
   title: Bottom Toolbar
   version: v1alpha1
+  components:
+    - crd:
+        api:
+          expose: readWrite
+        path: bottom_toolbar/crds/bottom-toolbar.eda.labs_bottomtoolbars.yaml
+        schema: bottom_toolbar/openapiv3/eda_oas_bottom-toolbar.eda.labs_bottomtoolbars.json
+        ui:
+          category: Management
+          name: Bottom Toolbars
+    - script:
+        path: bottom_toolbar/intents/bottomtoolbar/config_intent.py
+        trigger:
+          kind: BottomToolbar
+        type: config
