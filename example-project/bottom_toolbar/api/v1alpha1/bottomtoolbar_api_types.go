@@ -28,5 +28,6 @@ type BottomToolbarSpec struct {
 type BottomToolbarStatus struct {
 	// INSERT ADDITIONAL STATUS FIELDS - define observed state of cluster
 	// Important: Run "edabuilder generate" to regenerate code after modifying this file
+	// +eda:ui:title="result"
 	Result string `json:"result,omitempty"`
 }
